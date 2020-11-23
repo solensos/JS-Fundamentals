@@ -1,4 +1,6 @@
 softuni qm banica
 krastavici
+sirene
+luk
 domati
 chushki 
