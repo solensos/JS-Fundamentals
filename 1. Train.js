@@ -1,28 +1,22 @@
 function train(arr){
-    let wagon =  arr.shift().split(" ").map(Number);
-    let passPerWagon = arr.shift().split(" ").map(Number);
+    let wagons =  arr.shift().split(" ").map(Number);
+    let maxPassengerPerWagon = arr.shift().split(" ").map(Number);
 
-    
     for (let i = 0; i < arr.length; i++) {
-        let el = arr[i].split(" ");
-        if (el.length > 1){
-            wagon.push(Number(el[1]))
-        } else {
-            for (let j = 0; j < wagon.length; j++) {
-                let pasangers = Number(wagon[j]);
-                if ((pasangers + el) < passPerWagon){
-                    pasangers += Number(el)
-                    
-                    
-                } else{
-                    
-                }
+        let commands = arr[i].split(" ");
+        if(commands.length > 1){
+            wagons.push(+commands[1])
+        } else{
+            let passengersToAdd = Number(commands[0]);
+            for(let j = 0; j < wagons.length; j++){
+                if ((passengersToAdd + wagons[j]) <= maxPassengerPerWagon){
+                    wagons[j] += passengersToAdd
+                    break;
+                } 
             }
         }
-
     }
-
-
+    return wagons.join(" ")
 }
 console.log(train(['32 54 21 12 4 0 23',
 '75',
